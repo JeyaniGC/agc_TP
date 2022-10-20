@@ -24,13 +24,13 @@ from collections import Counter
 # ftp://ftp.ncbi.nih.gov/blast/matrices/
 import nwalign3 as nw
 
-__author__ = "Jeyani George Clement"
-__copyright__ = "Universite Paris Cité"
-__credits__ = ["Jeyani George Clement"]
+__author__ = "Your Name"
+__copyright__ = "Universite Paris Diderot"
+__credits__ = ["Your Name"]
 __license__ = "GPL"
 __version__ = "1.0.0"
-__maintainer__ = "Jeyani George Clement"
-__email__ = "jeyanioigeorgeclement@email.fr"
+__maintainer__ = "Your Name"
+__email__ = "your@email.fr"
 __status__ = "Developpement"
 
 
@@ -71,28 +71,11 @@ def get_arguments():
     return parser.parse_args()
 
 def read_fasta(amplicon_file, minseqlen):
-    seq = ""
-    with gzip.open(amplicon_file, "rt") as filin:
-        for line in filin:
-            if line.startswith(">"):
-                # dans le cas où on a déjà stocké une seq et qu'on veut pas la perdre
-                if len(seq) >= minseqlen:
-                    yield seq
-                seq = ""
-            else:
-                seq += line.strip()
-        if len(seq) >= minseqlen:
-            yield seq
+    pass
+
 
 def dereplication_fulllength(amplicon_file, minseqlen, mincount):
-    seq = list(read_fasta(amplicon_file, minseqlen))
-    seq_unique = set(seq)
-    count = 0
-
-    for sequence in seq_unique:
-        if sequence in seq:
-            count = seq.count(sequence)
-            yield [sequence, count] 
+    pass
 
 def get_identity(alignment_list):
     """Prend en une liste de séquences alignées au format ["SE-QUENCE1", "SE-QUENCE2"]
